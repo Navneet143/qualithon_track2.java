@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 /**
  * create and manage test sessions, browser sessions and utility functions
  **/
@@ -56,7 +58,7 @@ public class TestSession {
      * @return    webdriver wait instance
      **/
     public WebDriverWait driverShortWait(){
-        return this.driverWait(10);
+        return this.driverWait(20);
     }
 
     /**
@@ -65,6 +67,7 @@ public class TestSession {
      * @return    instance of TestSession with local google chrome browser
      **/
     public static TestSession ChromeTestSession(){
+    	WebDriverManager.chromedriver().setup();
         return new TestSession(new ChromeDriver());
     }
 
